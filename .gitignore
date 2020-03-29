@@ -7,6 +7,5 @@ __pycache__/
 local_settings.py
 /media
 /static
-mysite/static
+/mysite/static
 db.sqlite3
-*.css
