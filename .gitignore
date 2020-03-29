@@ -1,0 +1,10 @@
+# All the files that are needed to be ignored by the commit in git #
+
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+/media
+/static
+db.sqlite3

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}">
+  </head>
+  <body class="bg-light">
+
+    <h1 class="text-center mb-5">Todo Application</h1>
+
+    <div class="container text-center ">
+
+    <form class="form-signin" action="{% url 'add_task' %}" method="POST">
+      {% csrf_token %}
+      <label for="description">Description</label>
+      <input id="description" type="text" class="form-control mt-3" name="description" >
+      <br>
+      <label for="due_date">Due Date</label>
+      <input id="due_date" type="date" class="form-control mt-3 mb-3" name="due_date" >
+      <button type="submit" name="add_task" class="btn btn-info mr-auto"><span class='oi oi-plus'></span> Add Task</button>
+    </form>
+    <form class="" action="{% url 'delete_task' %}" method="POST">
+      {% csrf_token %}
+      <br>
+      <button type="submit" name="delete_task" class="btn btn-warning"><span class="oi oi-trash"></span> Delete Task</button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      {% if tasks %}
+      {% for task in tasks %}
+      <div class="custom-control custom-checkbox col-4">
+      <input type="checkbox" class="custom-control-input" id="task{{task.id}}" name="{{task.id}}">
+      <label class="custom-control-label" for="task{{task.id}}">{{task.description}}</label>
+      <p><span class="oi oi-calendar"></span> Due Date: {{task.due_date}}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </form>
+  </div>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
