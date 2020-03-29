@@ -1,2 +1,6 @@
 # to change language of repo from CSS to Python
     *.css linguist-language=Python
+
+
+    static/* linguist-vendored
+    mysite/static/* linguist-vendored
